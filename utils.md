@@ -12,6 +12,7 @@
 * fancy-ls = exa
 * terminal = alacritty
 * image-viewer = fim
+* backup = backintime
 
 # Information
 
