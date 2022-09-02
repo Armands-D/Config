@@ -1,0 +1,2 @@
+# Config
+Just some settings
