@@ -109,6 +109,10 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
+battery_widget = require("/widgets/battery")
+wifi_widget = require('/widgets/wifi')
+separator = wibox.widget{widget = wibox.widget.textbox, text = " | "}
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -259,8 +263,15 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
+            separator,
             wibox.widget.systray(),
+            separator,
+            wifi_widget,
+            separator,
+            battery_widget,
+            separator,
             mytextclock,
+            separator,
             s.mylayoutbox,
         },
     }
@@ -285,6 +296,8 @@ globalkeys = gears.table.join(
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
+    awful.key({ modkey,           }, "XF86AudioLowerVolume",      function () awful.spawn("amixer set Master %5+") end,
+              {description="lower audio", group="audio"}),
 
     awful.key({ modkey,           }, "j",
         function ()

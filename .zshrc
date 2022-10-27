@@ -10,15 +10,15 @@ unsetopt beep
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/armands/.zshrc'
 
 # Remove for autocomplete repo purposes
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # End of lines added by compinstall
 
 # Aliases
 alias ls="exa -al --header"
+alias cat='bat '
 alias ga="git add *"
 alias gc="git commit -am "
 alias gst="git status"
@@ -26,7 +26,7 @@ alias gpl="git pull"
 alias gps="git push"
 alias gal="git_script.sh"
 alias gto="git checkout "
-alias v="~/Dev/Scripts/sudo_editor.sh"
+alias v="~/Scripts/sudo_editor.sh"
 alias off="shutdown now"
 alias reboot="sudo reboot now"
 alias ff="firefox"
@@ -35,19 +35,19 @@ alias clr="clear"
 alias as="~/android-studio/bin/studio.sh > /dev/null 2>&1 &"
 alias studio="studio.sh"
 alias postman="snap run postman > /dev/null 2>&1 &"
-alias discord="discord > /dev/null 2>&1 &"
-alias pin='sudo pacman -S '
+#alias discord="discord > /dev/null 2>&1 &"
+alias pin='function(){sudo pacman -S $@ || yay -S $@}'
 alias mkdir='mkdir -pv'
-alias pup='sudo pacman -U'
+alias pup='sudo pacman -S archlinux-keyring; sudo pacman -Syu'
 alias pls='sudo pacman -Q'
-alias mv='mv -i'
-alias cp='cp -i'
-alias rm='rm -rf'
+alias mv='mv -i '
+alias cp='cp -i '
+alias rm='rm -rf '
 alias usblive='/opt/balenaEtcher/balena-etcher-electron > /dev/null 2>&1 &'
 alias pdf='/opt/sejda-desktop/sejda-desktop > /dev/null 2>&1 &'
-alias bashrc="nv ~/.bashrc"
+alias bashrc="v ~/.bashrc"
 alias srcbash="source ~/.bashrc"
-alias bright="~/Scripts/brightness.sh"
+alias bright='light -S ' #'sudo xbacklight -display 1 '
 alias wifi-connect="wifi_connect.sh"
 alias hack='cmatrix -a'
 alias audio='alsamixer'
@@ -61,12 +61,18 @@ alias sd-stop='sudo systemctl stop '
 alias sd-reload='sudo systemctl daemon-reload'
 alias sd-reset-failed='sudo systemctl reset-failed'
 alias sd-status='sudo systemctl status'
-# Config Aliases
+alias logoff='pkill -KILL -u $USER'
+alias wget='sudo wget '
+# Config Aliases for dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# Antlr Aliases
+alias antlr4='java -jar /usr/local/lib/antlr-4.11.1-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
 
 # ENV
 export PATH=/home/armands/Scripts/:/sbin/:/home/armands/android-studio/bin/:$PATH
 export EDITOR=/usr/bin/nvim
+export CLASSPATH=".:/usr/local/lib/antlr-4.11.1-complete.jar:$CLASSPATH"
 
 # Git Prompt
 autoload -Uz vcs_info

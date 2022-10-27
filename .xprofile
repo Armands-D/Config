@@ -2,16 +2,19 @@
 # Called by /etc/gdm/Xsession
 right_monitor=DP-4
 left_monitor=DP-2
-xset r rate 200 30
 # xrandr --output $right_monitor --primary --mode 2560x1440 --auto --rate 240
 # xrandr --output $left_monitor --pos 0x200 --auto --output $right_monitor --pos 1920x0 --auto
 
 flameshot &
 picom --config /home/armands/.config/picom/picom.conf &
 alacritty &
-(sleep 0.5 && nitrogen --restore &)
+# (sleep 0.5 && nitrogen --restore &)
+nitrogen --restore &
+# lxqt-powermanagement &
 # polybar &
 
 # Keymap CapsLock > Escape for vim
-xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+# xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+setxkbmap -option caps:escape
+xset r rate 200 30
 

@@ -26,7 +26,7 @@ set tabstop=2
 set shiftwidth=2
 set updatetime=300
 set wildmenu
-"set relativenumber
+set relativenumber
 set clipboard+=unnamedplus
 syntax on
 
@@ -48,7 +48,9 @@ call plug#begin('~/.config/nvim/plugged')
   " code completion https://github.com/neoclide/coc.nvim
   " make sure to install COC language servers & coc extensions
   " :CocInstall coc-json
-  Plug 'neoclide/coc.nvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Auto close brackets
+  Plug 'Townk/vim-autoclose',
 call plug#end()
 
 
