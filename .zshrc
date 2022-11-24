@@ -32,7 +32,7 @@ alias reboot="sudo reboot now"
 alias ff="firefox"
 alias fm="thunar"
 alias clr="clear"
-alias as="~/android-studio/bin/studio.sh > /dev/null 2>&1 &"
+#alias as="~/android-studio/bin/studio.sh > /dev/null 2>&1 &"
 alias studio="studio.sh"
 alias postman="snap run postman > /dev/null 2>&1 &"
 #alias discord="discord > /dev/null 2>&1 &"
@@ -46,7 +46,8 @@ alias rm='rm -rf '
 alias usblive='/opt/balenaEtcher/balena-etcher-electron > /dev/null 2>&1 &'
 alias pdf='/opt/sejda-desktop/sejda-desktop > /dev/null 2>&1 &'
 alias bashrc="v ~/.bashrc"
-alias srcbash="source ~/.bashrc"
+alias zshrc="v ~/.zshrc"
+alias srcsh="source ~/.bashrc && source ~/.zshrc"
 alias bright='light -S ' #'sudo xbacklight -display 1 '
 alias wifi-connect="wifi_connect.sh"
 alias hack='cmatrix -a'
@@ -63,11 +64,15 @@ alias sd-reset-failed='sudo systemctl reset-failed'
 alias sd-status='sudo systemctl status'
 alias logoff='pkill -KILL -u $USER'
 alias wget='sudo wget '
+alias cmd='command '
 # Config Aliases for dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Antlr Aliases
 alias antlr4='java -jar /usr/local/lib/antlr-4.11.1-complete.jar'
 alias grun='java org.antlr.v4.gui.TestRig'
+alias term='alacritty --working-directory $PWD &'
+alias py='python '
+alias ipy='ipython '
 
 # ENV
 export PATH=/home/armands/Scripts/:/sbin/:/home/armands/android-studio/bin/:$PATH
@@ -110,11 +115,6 @@ then
     ssh-add ~/.ssh/gitlabs 2> /dev/null
     ssh-add ~/.ssh/github 2> /dev/null
 fi
-
-
-# Plugins
-# source ~/.zplug/init.zsh
-# zplug "jeffreytse/zsh-vi-mode"
 
 echo
 neofetch
