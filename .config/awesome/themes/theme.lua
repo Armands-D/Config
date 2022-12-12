@@ -66,13 +66,13 @@ colours.bright_white =   '#d4be98'
 
 theme.bg_normal     = colours.background
 theme.bg_focus      = colours.bright_green
-theme.bg_urgent     = colours.bright_red
+theme.bg_urgent     = colours.background
 theme.bg_minimize   = colours.background
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = colours.bright_white
 theme.fg_focus      = colours.background
-theme.fg_urgent     = colours.background
+theme.fg_urgent     = colours.bright_red
 theme.fg_minimize   = colours.white
 
 theme.useless_gap   = dpi(5)

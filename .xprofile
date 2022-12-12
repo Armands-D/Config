@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
 # Called by /etc/gdm/Xsession
-right_monitor=DP-4
+
+right_monitor=DP-1
 left_monitor=DP-2
-# xrandr --output $right_monitor --primary --mode 2560x1440 --auto --rate 240
-# xrandr --output $left_monitor --pos 0x200 --auto --output $right_monitor --pos 1920x0 --auto
+tv_monitor=HDMI-1
+#xrandr --output $right_monitor --primary --mode 2560x1440 --auto --rate 240
+#xrandr --output $left_monitor --pos 0x200 --auto  $right_monitor --pos 1920x0 --auto
+
+#xrandr --output $left_monitor --left-of $right_monitor
+#xrandr --output $left_monitor --mode 1920x1080 --rate 144 
+#xrandr --output $right_monitor --mode 2560x1440 --rate 240
 
 flameshot &
 picom --config /home/armands/.config/picom/picom.conf &
 alacritty &
-# (sleep 0.5 && nitrogen --restore &)
-nitrogen --restore &
+(sleep 0.5 && nitrogen --restore &)
+#nitrogen --restore &
 # lxqt-powermanagement &
 # polybar &
 
@@ -17,4 +23,5 @@ nitrogen --restore &
 # xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 setxkbmap -option caps:escape
 xset r rate 200 30
+xset m 0 0
 

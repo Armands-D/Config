@@ -18,7 +18,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Aliases
 alias ls="exa -al --header"
-alias cat='bat '
+alias cat='bat -p '
 alias ga="git add *"
 alias gc="git commit -am "
 alias gst="git status"
@@ -65,11 +65,13 @@ alias sd-status='sudo systemctl status'
 alias logoff='pkill -KILL -u $USER'
 alias wget='sudo wget '
 alias cmd='command '
+alias brain='Obsidian-1.0.3.AppImage &' 
 # Config Aliases for dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Antlr Aliases
-alias antlr4='java -jar /usr/local/lib/antlr-4.11.1-complete.jar'
-alias grun='java org.antlr.v4.gui.TestRig'
+# alias antlr4='java -jar /usr/local/lib/antlr-4.11.1-complete.jar'
+alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.11.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.11.1-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig' alias grun='java org.antlr.v4.gui.TestRig'
 alias term='alacritty --working-directory $PWD &'
 alias py='python '
 alias ipy='ipython '
@@ -98,10 +100,10 @@ function zle-line-init zle-keymap-select {
     green="#5fd75f" 
     blue="#00afaf" 
     orange="#ffaf00" 
-    vim="%F{#d3869b}%B${${KEYMAP/vicmd/ }/(main|viins)/ }%b%f"
-    usr="%F{#a9b665}  %n%f"
+    vim="%F{#d3869b}%B${${KEYMAP/vicmd/ }/(main|viins)/ }%b%f"
+    usr="%F{#a9b665} %n%f"
     dir="%F{#7daea3}  %1~%f"
-    git="%F{#d8a657}  $vcs_info_msg_0_%f"
+    git="%F{#d8a657}  $vcs_info_msg_0_%f"
     PS1="$usr $dir $git  $vim"$'\n'"  "
     zle reset-prompt
 }
