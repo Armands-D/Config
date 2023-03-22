@@ -123,5 +123,9 @@ fi
 
 echo
 neofetch
+
+ # Python Click Auto Complete
+ # Doc: https://click.palletsprojects.com/en/8.1.x/shell-completion/#enabling-completion
+ # Repo: https://github.com/Armands-D/TemplateTool
 eval "$(_TEMP_TOOL_COMPLETE=zsh_source temp_tool)"
 
