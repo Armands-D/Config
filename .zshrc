@@ -50,6 +50,7 @@ alias zshrc="v ~/.zshrc"
 alias srcsh="source ~/.bashrc && source ~/.zshrc"
 alias bright='light -S ' #'sudo xbacklight -display 1 '
 alias wifi-connect="wifi_connect.sh"
+alias hotspot-connect='nmcli device wifi connect Galaxy\ Thonk\ S20\ FE password Armbandy'
 alias hack='cmatrix -a'
 alias audio='alsamixer'
 alias img='function (){fim -a $1 &}'
@@ -75,9 +76,11 @@ alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.11.1-complete.jar:$CLASSPA
 alias term='alacritty --working-directory $PWD &'
 alias py='python '
 alias ipy='ipython '
+alias tt='temp_tool'
 
 # ENV
-export PATH=/home/armands/Scripts/:/sbin/:/home/armands/android-studio/bin/:$PATH
+# .local/bin for user pip installs
+export PATH=/home/armands/Scripts/:/sbin/:/home/armands/android-studio/bin/:/home/armands/.local/bin:$PATH
 export EDITOR=/usr/bin/nvim
 export CLASSPATH=".:/usr/local/lib/antlr-4.11.1-complete.jar:$CLASSPATH"
 
@@ -120,4 +123,5 @@ fi
 
 echo
 neofetch
+eval "$(_TEMP_TOOL_COMPLETE=zsh_source temp_tool)"
 
