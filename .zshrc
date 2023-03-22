@@ -66,17 +66,21 @@ alias logoff='pkill -KILL -u $USER'
 alias wget='sudo wget '
 alias cmd='command '
 alias brain='Obsidian-1.0.3.AppImage &' 
+alias term='alacritty --working-directory $PWD &'
+alias py='python '
+alias ipy='ipython '
+alias pwr='sudo powertop'
+alias docker='sudo docker '
 # Config Aliases for dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Antlr Aliases
 # alias antlr4='java -jar /usr/local/lib/antlr-4.11.1-complete.jar'
 alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.11.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
 alias grun='java -Xmx500M -cp "/usr/local/lib/antlr-4.11.1-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig' alias grun='java org.antlr.v4.gui.TestRig'
-alias term='alacritty --working-directory $PWD &'
-alias py='python '
-alias ipy='ipython '
 
 # ENV
+
+# Antlr
 export PATH=/home/armands/Scripts/:/sbin/:/home/armands/android-studio/bin/:$PATH
 export EDITOR=/usr/bin/nvim
 export CLASSPATH=".:/usr/local/lib/antlr-4.11.1-complete.jar:$CLASSPATH"
@@ -96,15 +100,20 @@ function zle-line-init zle-keymap-select {
     # RPS1="%F{#c678dd}%B${${KEYMAP/vicmd/}/(main|viins)/}%b%f"
     # RPS2=$RPS1
     # vi mode status
+    bold=$(tput bold)
+    normal=$(tput sgr0)
     pink="#c678dd" 
     green="#5fd75f" 
     blue="#00afaf" 
     orange="#ffaf00" 
-    vim="%F{#d3869b}%B${${KEYMAP/vicmd/ }/(main|viins)/ }%b%f"
+    # vim="%F{#d3869b}%B-[${${KEYMAP/vicmd/}/(main|viins)/🖍} ]-%b%f"
+    vim="%F{#d3869b}%B-[${${KEYMAP/vicmd/NORMAL}/(main|viins)/INSERT}]-%b%f"
     usr="%F{#a9b665} %n%f"
     dir="%F{#7daea3}  %1~%f"
-    git="%F{#d8a657}  $vcs_info_msg_0_%f"
-    PS1="$usr $dir $git  $vim"$'\n'"  "
+    git_str="FAILED TO SET GIT STR"
+    if [ -z $vcs_info_msg_0_ ];then git_str="-⊰⊱-";else git_str="-⊰ $vcs_info_msg_0_ ⊱-";fi;
+    git="%F{#d8a657}  $git_str %f"
+    PS1="${bold}$usr $dir $git $vim"$'\n'"  "
     zle reset-prompt
 }
 zle -N zle-line-init
