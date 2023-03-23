@@ -23,7 +23,6 @@ set smartcase
 set smarttab
 set splitright
 set tabstop=2
-set shiftwidth=2
 set updatetime=300
 set wildmenu
 set relativenumber
