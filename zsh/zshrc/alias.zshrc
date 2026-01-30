@@ -71,7 +71,7 @@ alias pwr='sudo powertop'
 alias bashrc="v $HOME/.bashrc"
 alias zshrc="v $HOME/.zshrc"
 alias srcsh="source $HOME/.bashrc && source $HOME/.zshrc"
-alias srczsh="$HOME/.zshenv && source $HOME/.zshrc "
+alias srczsh="source $HOME/.zshenv && source $HOME/.zshrc "
 alias srcbash="source $HOME/.bashrc"
 
 ## System
