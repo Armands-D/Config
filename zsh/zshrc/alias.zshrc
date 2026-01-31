@@ -10,7 +10,7 @@ alias cp='cp -ir '
 alias rm='rm -rf '
 alias mkdir='mkdir -pv'
 alias cmd='command '
-alias rr="ranger" # cli directory navigation
+alias rr=". ranger" # cli directory navigation
 # alias cd='autojump' # cd alternative
 
 ## System Package Manager (Ubuntu)
