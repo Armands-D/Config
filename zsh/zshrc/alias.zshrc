@@ -38,7 +38,6 @@ alias python='python3'
 ## Git
 
 alias ga="git add *"
-
 alias gc="_gc" 
 alias gbls="git branch --all"
 alias gl='git log'
@@ -47,8 +46,10 @@ alias gst="git status"
 alias gpl="git pull"
 alias gps="git fetch && git push"
 alias gto="git checkout"
-alias gri="_gri"
-alias gr='_gr'
+alias gri="git rebase -i"
+alias gr='git rebase'
+alias grsts='git reset --soft'
+alias grsth='git reset --hard'
 
 ## Apps
 alias v="$HOME/Scripts/sudo_editor.sh"
