@@ -14,3 +14,8 @@ emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
 ## https://github.com/wting/autojump
 [[ -s /home/armands/.autojump/etc/profile.d/autojump.sh ]] && source /home/armands/.autojump/etc/profile.d/autojump.sh
 
+## TMUX
+## https://wiki.archlinux.org/title/Tmux#Start_tmux_on_every_shell_login
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
+fi
