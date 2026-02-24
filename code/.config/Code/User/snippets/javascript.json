@@ -1,0 +1,77 @@
+{
+  "For Of Loop": {
+    "prefix": ["for", "for-each", "for-of"],
+    "body": [
+      "for(const ${2:element} of ${1:array}){",
+      "\t$0",
+      "}",
+    ],
+    "description": "A for of loop."
+  },
+  "While < Arr": {
+    "prefix": ["while", "while-lt", "while-lt-arr"],
+    "body": [
+      "let i = 0",
+      "while(i < ${1:array}.length){", 
+      "\t$0",
+      "\ti ++",
+      "}",
+    ],
+    "description": "While Less Than Array"
+  },
+  "JS if name == main": {
+    "prefix": ["if-name-main", "main"],
+    "body": [
+      "function main(){",
+      "\t$0",
+      "}",
+      "",
+      "if (typeof require !== 'undefined' && require.main === module) {",
+      "  main()",
+      "}",
+    ],
+    "description": "JS if name == main"
+  },
+  "Console Log": {
+    "prefix": ["clog", "log", "console"],
+    "body": [
+      "console.log($0)",
+    ],
+    "description": "Console Log"
+  },
+  "Console Warn": {
+    "prefix": ["cwarn", "warning", "console"],
+    "body": [
+      "console.warn($0)",
+    ],
+    "description": "Console Warn"
+  },
+  "Console Error": {
+    "prefix": ["cerr", "error", "console"],
+    "body": [
+      "console.error($0)",
+    ],
+    "description": "Console Error"
+  },
+  "Lambda Func": {
+    "prefix": ["lambda", "callback"],
+    "body": [
+      "const ${1:callback} = (${2:arg})=>{$0}",
+    ],
+    "description": "Lambda Function"
+  },
+  "Ternary Operator": {
+    "prefix": ["if", "if-one-line", "ternary"],
+    "body": [
+      "${1:expr} ? ${2:true} : ${3:false}",
+    ],
+    "description": "Ternary Operator"
+  },
+  "Swap Var": {
+    "prefix": ["swap", "swap-var"],
+    "body": [
+      "[${1:a}, ${2:b}] = [${3:b}, ${4:a}]",
+    ],
+    "description": "Swap Var"
+  },
+}

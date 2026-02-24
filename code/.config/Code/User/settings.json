@@ -1,0 +1,49 @@
+{
+    "files.autoSave": "onFocusChange",
+    "terminal.integrated.profiles.linux": {
+        
+        "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "editor.tabSize": 2,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "java.configuration.runtimes": [
+        
+    ],
+    "python.analysis.typeCheckingMode": "standard",
+    "workbench.iconTheme": "material-icon-theme",
+    "python.defaultInterpreterPath": "/bin/python3",
+    "makefile.configureOnOpen": true,
+    "vim.digraphs": {
+        
+    },
+    "explorer.confirmDragAndDrop": false,
+    "workbench.colorTheme": "Night Owl (No Italics)",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "400", // Regular
+    "editor.allowVariableFontsInAccessibilityMode": true,
+    "debug.console.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "scm.inputFontSize": 12,
+    "eslint.lintTask.enable": true,
+    "terminal.integrated.fontLigatures.enabled": true,
+    "terminal.integrated.fontLigatures.featureSettings": "\"calt\" on, \"liga\" on"
+}
