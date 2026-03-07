@@ -6,3 +6,15 @@ require("config.lazy_init")
 -- START set
 require("config.set")
 -- END set
+
+-- START remap
+require("config.remap")
+-- END remap
+
+-- START TreeSitter
+local treesitter = require('nvim-treesitter')
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
+})
+-- END TreeSitter

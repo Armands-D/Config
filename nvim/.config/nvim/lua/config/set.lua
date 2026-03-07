@@ -9,7 +9,10 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
- 
+
 vim.opt.incsearch = true -- incremental search
- 
+
 vim.opt.termguicolors = true
+
+-- line offset Cursor (centre cursor)
+vim.opt.so=999
