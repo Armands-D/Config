@@ -30,3 +30,4 @@ done
 
 echo
 neofetch
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
