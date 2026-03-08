@@ -296,8 +296,12 @@ handle_mime() {
                 exit 2
             fi
             if [[ "$( tput colors )" -ge 256 ]]; then
-                local pygmentize_format='terminal256'
-                local highlight_format='xterm256'
+                # https://bbs.archlinux.org/viewtopic.php?id=241295
+                # https://unix.stackexchange.com/questions/418110/is-there-a-way-to-get-ranger-to-syntax-highlight-files-using-the-x-colorscheme-o
+                #local pygmentize_format='terminal256'
+                #local highlight_format='xterm256'
+                local pygmentize_format='terminal'
+                local highlight_format='ansi'
             else
                 local pygmentize_format='terminal'
                 local highlight_format='ansi'

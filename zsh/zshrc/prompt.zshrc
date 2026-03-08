@@ -11,31 +11,23 @@ function zle-line-init zle-keymap-select {
     # RPS1="%F{#c678dd}%B${${KEYMAP/vicmd/}/(main|viins)/}%b%f"
     # RPS2=$RPS1
     ## vi mode status
+    #
+    #
     bold=$(tput bold)
     normal=$(tput sgr0)
 
-    ## -- Gruvbox
-    #pink="#c678dd" 
-    #green="#5fd74f" 
-    #blue="#-01afaf" 
-    #orange="#ffaf00" 
+    # https://stackoverflow.com/questions/689765/how-can-i-change-the-color-of-my-prompt-in-zsh-different-from-normal-text
+    autoload -U colors && colors
 
-    ## -- Catpuccino
-    pink="#F5BDE6" 
-    green="#A6DA95" 
-    blue="#8AADF4" 
-    orange="#EED49F" 
+    usr="%F{green}U: %n%f"
 
-    
-    usr="%F{$green}U: %n%f"
-
-    dir="%F{$blue}D: %1~%f"
+    dir="%F{blue}D: %1~%f"
 
     git_str="FAILED TO SET GIT STR"
     if [ -z $vcs_info_msg_0_ ];then git_str="G: {}";else git_str="G: { $vcs_info_msg_0_ }";fi;
-    git="%F{$orange}$git_str %f"
+    git="%F{yellow}$git_str %f"
 
-    vim="%F{$pink}%BV: -[${${KEYMAP/vicmd/NORMAL}/(main|viins)/INSERT}]-%b%f"
+    vim="%F{magenta}%BV: -[${${KEYMAP/vicmd/NORMAL}/(main|viins)/INSERT}]-%b%f"
 
     py_venv="FAILED TO SET PY VENV STR"
     if [ -z $VIRTUAL_ENV ];then py_venv="P: ()";else py_venv="P: ${VIRTUAL_ENV_PROMPT}";fi;

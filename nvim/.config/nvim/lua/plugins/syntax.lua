@@ -9,6 +9,10 @@ return {
       sync_install = false,
       highlight = { enable = true },
       indent = { enable = true },
+      ensure_installed = {
+        "c", "lua", "vim", "vimdoc", "elixir", "javascript", "html", "python", "typescript",
+        "css", "sql", "json", "yaml", "markdown"
+      },
   },
   config = function ()
     local treesitter = require('nvim-treesitter')

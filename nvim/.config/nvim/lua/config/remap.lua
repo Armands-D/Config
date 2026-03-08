@@ -15,3 +15,17 @@ vim.keymap.set('n', '<leader>m', harpoon_mark.add_file)
 vim.keymap.set('n', '<leader>M', harpoon_mark.rm_file)
 -- vim.keymap.set('n', 'j', harpoon_ui.nav_next)
 -- vim.keymap.set('n', 'k', harpoon_ui.nav_prev)
+
+-- # Ranger
+vim.api.nvim_set_keymap("n", "<leader>ef", "", {
+  noremap = true,
+  callback = function()
+    require("ranger-nvim").open(true)
+  end,
+})
+
+-- # TreeSitter
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
+})
