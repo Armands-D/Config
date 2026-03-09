@@ -118,7 +118,7 @@ return {
     require("mason").setup({})
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "pyright", "biome", "lua_ls"
+        "pyright", "biome", "lua_ls", "ts_ls",
       },
       automatic_enable = true,
       handlers = {
