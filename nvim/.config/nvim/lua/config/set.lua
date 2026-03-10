@@ -18,3 +18,6 @@ vim.opt.termguicolors = true
 
 -- line offset Cursor (centre cursor)
 vim.opt.so=999
+
+-- Not sure why but vim.opt don't work for below values
+-- set notimeout nottimeout
