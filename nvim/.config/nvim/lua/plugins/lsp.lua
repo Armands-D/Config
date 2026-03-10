@@ -9,6 +9,7 @@ return {
     {"mason-org/mason-lspconfig.nvim", -- package manager for lsp servers
       dependencies = {"mason-org/mason.nvim",}
     },
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
     "onsails/lspkind.nvim", -- LSP Auto Complete Formatting + Symbols
   },
   config = function ()
@@ -110,6 +111,21 @@ return {
       lspconfig_defaults.capabilities,
       require('cmp_nvim_lsp').default_capabilities()
     )
+  
+    -- require("mason-tool-installer").setup({
+    --   auto_update = true,
+    --   run_on_start = true,
+    --   start_delay = 3000,
+    --   debounce_hours = 12,
+    --   ensure_installed = {
+    --     "pyright",
+    --     "biome",
+    --     "lua_ls",
+    --     "ts_ls",
+    --     "cfn-lint",
+    --     "yamlls",
+    --   },
+    -- })
 
     -- # mason-lspconfig
     -- enable sever autostart IFF server is MasonInstall'd
@@ -117,68 +133,17 @@ return {
     --  https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
     require("mason").setup({})
     require("mason-lspconfig").setup({
-      ensure_installed = {
-        "pyright", "biome", "lua_ls", "ts_ls",
-      },
       automatic_enable = true,
-      handlers = {
 
-        -- auto enable lsp server handler
-        function(server_name)
-          require('lspconfig')[server_name].setup({})
-        end,
-
-        lua_ls = function ()
-           vim.lsp.config('lua_ls', {
-            on_init = function(client)
-              if client.workspace_folders then
-                local path = client.workspace_folders[1].name
-                if
-                  path ~= vim.fn.stdpath('config')
-                  and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
-                then
-                  return
-                end
-              end
-              client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-                runtime = {
-                  -- Tell the language server which version of Lua you're using (most
-                  -- likely LuaJIT in the case of Neovim)
-                  version = 'LuaJIT',
-                  -- Tell the language server how to find Lua modules same way as Neovim
-                  -- (see `:h lua-module-load`)
-                  path = {
-                    'lua/?.lua',
-                    'lua/?/init.lua',
-                  },
-                },
-                -- Make the server aware of Neovim runtime files
-                workspace = {
-                  checkThirdParty = false,
-                  library = {
-                    vim.env.VIMRUNTIME,
-                    -- Depending on the usage, you might want to add additional paths
-                    -- here.
-                    -- '${3rd}/luv/library',
-                    -- '${3rd}/busted/library',
-                  },
-                  -- Or pull in all of 'runtimepath'.
-                  -- NOTE: this is a lot slower and will cause issues when working on
-                  -- your own configuration.
-                  -- See https://github.com/neovim/nvim-lspconfig/issues/3189
-                  -- library = vim.api.nvim_get_runtime_file('', true),
-                },
-              })
-            end,
-
-            settings = {
-              Lua = {},
-            },
-          })
-
-        end,
-      }
+      ensure_installed = {
+        "pyright",
+        "biome",
+        "lua_ls",
+        "ts_ls",
+        "yamlls",
+      },
     })
+
     -- # lspconfig diagnostice Popups (Warning, Errors)
     vim.diagnostic.config({
       virtual_text = false
