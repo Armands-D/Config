@@ -21,6 +21,10 @@ return {
 
       telescope.setup({
        	defaults = {
+          layout_config = {
+            width = 0.98,
+            -- other layout configuration here
+          },
 		      -- `hidden = true` is not supported in text grep commands.
 		      vimgrep_arguments = vimgrep_arguments,
 	      },
