@@ -15,6 +15,9 @@ emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
 ##[[ -s /home/armands/.autojump/etc/profile.d/autojump.sh ]] && source /home/armands/.autojump/etc/profile.d/autojump.sh # non brew source
 [ -f /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh ] && . /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh # homebrew source
 
+#$ -- Zoxide (autojump alternative)
+eval "$(zoxide init zsh)" # after compinit
+
 ## TMUX
 ## https://wiki.archlinux.org/title/Tmux#Start_tmux_on_every_shell_login
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
