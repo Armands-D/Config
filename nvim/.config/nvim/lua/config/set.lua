@@ -22,3 +22,6 @@ vim.opt.so=999
 
 -- Not sure why but vim.opt don't work for below values
 -- set notimeout nottimeout
+--
+vim.opt.wildmenu = true
+vim.opt.wildmode='longest:full,full'
