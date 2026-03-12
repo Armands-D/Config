@@ -3,8 +3,8 @@
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt autocd
 unsetopt extendedglob 
 setopt nomatch
@@ -23,6 +23,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+## Source Homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+
 ## -- Source zshrc folder
 for FILE in $HOME/zshrc/* ; do
     source $FILE
@@ -30,4 +33,3 @@ done
 
 echo
 neofetch
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"

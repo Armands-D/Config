@@ -3,15 +3,15 @@
 ## Common
 alias ls="eza -al --header" # ls alternative
 alias bat='batcat'
-alias cat='bat -p '
+alias cat='bat -p'
 alias clr="clear"
-alias mv='mv -i '
-alias cp='cp -ir '
-alias rm='rm -rf '
+alias mv='mv -i'
+alias cp='cp -ir'
+alias rm='rm -rf'
 alias mkdir='mkdir -pv'
 alias cmd='command '
 alias rr=". ranger" # cli directory navigation
-alias cd='j' # cd alternative
+#alias cd='j' # cd alternative
 
 ## System Package Manager (Ubuntu)
 alias pin='sudo apt install'
