@@ -10,14 +10,21 @@ vim.keymap.set('n', '<leader>fs', builtin.treesitter, { desc = 'Telescope treesi
 -- nvim-telescope/telescope-file-browser.nvim
 vim.keymap.set("n", "<space>ef", ":Telescope file_browser<CR>")
 
+
+-- # TreeSitter
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
+})
+
+-- # Arhcive
+
 -- # Harpoon
-local harpoon_ui = require('harpoon.ui')
-local harpoon_mark = require('harpoon.mark')
-vim.keymap.set('n', '<leader>b', harpoon_ui.toggle_quick_menu)
-vim.keymap.set('n', '<leader>m', harpoon_mark.add_file)
-vim.keymap.set('n', '<leader>M', harpoon_mark.rm_file)
--- vim.keymap.set('n', 'j', harpoon_ui.nav_next)
--- vim.keymap.set('n', 'k', harpoon_ui.nav_prev)
+-- local harpoon_ui = require('harpoon.ui')
+-- local harpoon_mark = require('harpoon.mark')
+-- vim.keymap.set('n', '<leader>b', harpoon_ui.toggle_quick_menu)
+-- vim.keymap.set('n', '<leader>m', harpoon_mark.add_file)
+-- vim.keymap.set('n', '<leader>M', harpoon_mark.rm_file)
 
 -- # Ranger
 --vim.api.nvim_set_keymap("n", "<leader>ef", "", {
@@ -26,9 +33,3 @@ vim.keymap.set('n', '<leader>M', harpoon_mark.rm_file)
 --    require("ranger-nvim").open(true)
 --  end,
 --})
-
--- # TreeSitter
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
-  callback = function() vim.treesitter.start() end,
-})
