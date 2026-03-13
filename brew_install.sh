@@ -18,3 +18,8 @@ tree-sitter-cli
 tree-sitter@0.25
 zoxide
 zsh
+
+# optional
+cowsay
+lolcat
+fortune

@@ -32,4 +32,6 @@ for FILE in $HOME/zshrc/* ; do
 done
 
 echo
+
 neofetch
+fortune -s | cowsay -y | lolcat --spread 10
