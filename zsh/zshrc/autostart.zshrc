@@ -18,10 +18,13 @@ emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
 #$ -- Zoxide (autojump alternative)
 eval "$(zoxide init zsh)" # after compinit
 
+# https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
+source <(fzf --zsh)
+
 ## TMUX
 ## https://wiki.archlinux.org/title/Tmux#Start_tmux_on_every_shell_login
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-    exec tmux new-session -A -s ${USER} > /dev/null 2>&1
+    exec tmux new-session -A -s main-${USER} > /dev/null 2>&1
     exec tmux new-window > /dev/null 2>&1
 fi
 
