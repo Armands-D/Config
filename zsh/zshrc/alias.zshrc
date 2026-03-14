@@ -10,6 +10,10 @@ alias cp='cp -ir'
 alias rm='rm -rf'
 alias mkdir='mkdir -pv'
 alias cmd='command '
+
+# Display control characters, no caret notation
+# https://unix.stackexchange.com/questions/280419/how-to-use-less-in-a-script-without-getting-esc-escape-characters
+alias less='less -R'
 alias rr=". ranger" # cli directory navigation
 #alias cd='j' # cd alternative
 

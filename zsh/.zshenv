@@ -1,5 +1,5 @@
 # .local/bin - For python user installs
-export PATH="/home/armands/Scripts/:/sbin/:/home/armands/android-studio/bin/:/home/armands/.local/bin:$PATH"
+export PATH="$HOME/.local/bin/scripts:/sbin/:$HOME/android-studio/bin/:$HOME/.local/bin:$PATH"
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/code --wait"
 export GIT_EDITOR="$EDITOR"
