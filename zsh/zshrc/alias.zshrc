@@ -1,7 +1,8 @@
 ## -- Aliases
 
 ## Common
-alias ls="eza -al --header" # ls alternative
+alias eza="eza -al --icons --no-time --no-user -B --total-size"
+alias ls="eza" # ls alternative
 alias bat='batcat'
 alias cat='bat -p'
 alias clr="clear"
@@ -9,7 +10,8 @@ alias mv='mv -i'
 alias cp='cp -ir'
 alias rm='rm -rf'
 alias mkdir='mkdir -pv'
-alias cmd='command '
+alias cmd='command'
+
 
 # Display control characters, no caret notation
 # https://unix.stackexchange.com/questions/280419/how-to-use-less-in-a-script-without-getting-esc-escape-characters
