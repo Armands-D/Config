@@ -6,6 +6,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find f
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fs', builtin.treesitter, { desc = 'Telescope treesitter functions' }) -- find symbol
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- nvim-telescope/telescope-file-browser.nvim
 vim.keymap.set("n", "<space>ef", ":Telescope file_browser<CR>")
