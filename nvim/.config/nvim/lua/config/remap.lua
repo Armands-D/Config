@@ -9,7 +9,8 @@ vim.keymap.set('n', '<leader>fs', builtin.treesitter, { desc = 'Telescope treesi
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- nvim-telescope/telescope-file-browser.nvim
-vim.keymap.set("n", "<space>ef", ":Telescope file_browser<CR>")
+-- vim.keymap.set("n", "<space>ef", ":Telescope file_browser<CR>")
+vim.keymap.set("n", "<space>ef", ":Oil --float .<CR>")
 
 
 -- # TreeSitter
