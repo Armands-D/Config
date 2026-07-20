@@ -4,8 +4,9 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    work=~/rev-ccaas/repo 
-    selected=$(find ~/Dev ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    work=(~/rev-ccaas/repo)
+    personal=(~/Dev ~/)
+    selected=$(find ${personal[@]} -mindepth 0 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
