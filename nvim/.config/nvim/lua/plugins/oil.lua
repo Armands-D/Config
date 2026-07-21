@@ -7,6 +7,10 @@ return {
     float = {
       padding = 10,
       border = 12,
+    },
+    view_options = {
+      -- Show files and directories that start with "."
+      show_hidden = true,
     }
   },
   -- Optional dependencies
