@@ -55,7 +55,8 @@ return {
 
       -- # Enable sources for auto completion (LSP, File Paths, Buffer Text)
       sources = {
-        { name = 'path'},
+        { name = 'path' },
+        { name = 'snippets' },
         { name = 'nvim_lsp' },
         { name = 'buffer' },
       },

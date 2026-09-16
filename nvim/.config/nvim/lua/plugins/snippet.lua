@@ -1,9 +1,12 @@
 return {
   "garymjr/nvim-snippets",
   dependencies = {
-    { "rafamadriz/friendly-snippets" }
+    {"rafamadriz/friendly-snippets" }
   },
-  friendly_snippets= true,
+  opts = {
+    friendly_snippets = true,
+  },
+  event = "InsertEnter",
   keys = {
     {
       "<Tab>",
