@@ -1,5 +1,22 @@
 vim.opt.clipboard = 'unnamedplus' -- use system keyboard for yank
 
+-- On WSL, force the win32yank clipboard provider and strip Windows'
+-- CRLF line endings on paste (avoids ^M showing up after `p`/`P`).
+if vim.fn.has('wsl') == 1 and vim.fn.executable('win32yank.exe') == 1 then
+  vim.g.clipboard = {
+    name = 'win32yank-wsl',
+    copy = {
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
+    },
+    paste = {
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+  }
+end
+
 vim.opt.nu = true                 -- set line numbers -- set line numbers
 vim.opt.relativenumber = true     -- use relative line numbers
 vim.opt.wrap = false
