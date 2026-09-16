@@ -160,9 +160,21 @@ return {
       virtual_text = false
     })
 
-    -- Show line diagnostics automatically in hover window
+    -- Show line diagnostics automatically in hover window,
+    -- but don't steal focus/space from an already-open float
+    -- (e.g. hover or signature-help documentation).
     vim.o.updatetime = 250
-    vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      callback = function()
+        for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+          if vim.api.nvim_win_get_config(winid).zindex then
+            -- a floating window (hover, signature help, etc.) is already open
+            return
+          end
+        end
+        vim.diagnostic.open_float(nil, { focus = false })
+      end,
+    })
 
 
   end,
