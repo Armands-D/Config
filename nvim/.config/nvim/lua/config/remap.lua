@@ -12,6 +12,9 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- vim.keymap.set("n", "<space>ef", ":Telescope file_browser<CR>")
 vim.keymap.set("n", "<space>ef", ":Oil --float .<CR>")
 
+vim.keymap.set({ 'n', 'x' }, '<leader>r', function()
+  require('grug-far').open({ prefills = { search = vim.fn.expand("<cword>") }, transient=true })
+end, { desc = 'grug-far: Search Replace' })
 
 -- # TreeSitter
 vim.api.nvim_create_autocmd('FileType', {

@@ -24,6 +24,6 @@ return {
       { "<leader>n", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
       { "<leader>p", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
       { "<leader>S", "<cmd>Grapple open_scopes<cr>", desc = "Grapple toggle loaded scope" },
-      { "<leader>s", "<cmd>Grapple open_loaded<cr>", desc = "Grapple open loaded scope" },
+      -- { "<leader>s", "<cmd>Grapple open_loaded<cr>", desc = "Grapple open loaded scope" },
   },
 }

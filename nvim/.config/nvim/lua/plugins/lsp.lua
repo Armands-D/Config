@@ -1,6 +1,16 @@
 return {
   "neovim/nvim-lspconfig",
-  opts = {},
+  opts = {
+    -- make sure mason installs the server
+    servers = {
+      jdtls = {},
+    },
+    setup = {
+      jdtls = function()
+        return true -- avoid duplicate servers
+      end,
+    },
+  },
   dependencies = {
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp", -- lsp-config completion
