@@ -16,13 +16,25 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
-    exit 0
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    # Always create the session detached first so we can add windows to it
+    # before anyone attaches/switches to it.
+    tmux new-session -ds $selected_name -c $selected
+
+    # Open nvim in the first window.
+    tmux send-keys -t "${selected_name}:1" nvim Enter
+
+    # Open 3 more plain windows (4 total), all starting in the selected
+    # directory.
+    for i in 1 2 3; do
+        tmux new-window -t $selected_name -c $selected
+    done
+    tmux select-window -t "${selected_name}:1"
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux attach-session -t $selected_name
+    exit 0
 fi
 
 tmux switch-client -t $selected_name
