@@ -49,3 +49,6 @@ vim.opt.undofile = true
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "160"
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
