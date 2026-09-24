@@ -10,7 +10,23 @@ return {
       require("vague").setup({
         -- optional configuration here
       })
-      vim.cmd("colorscheme vague")
+      --vim.cmd("colorscheme vague")
     end
   },
+  {
+    "rezniqov/soviet.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {}, -- Add your soviet.nvim settings here.
+    config = function(_, opts)
+      require("soviet").setup(opts)
+      --vim.cmd.colorscheme("soviet-dark")
+      -- vim.cmd.colorscheme("soviet-light")
+    end,
+  },
+  {
+      "srcery-colors/srcery-vim",
+      lazy = false,
+      priority = 1000,
+  }
 }

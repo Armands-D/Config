@@ -43,7 +43,8 @@ alias python='python3'
 
 ## Git
 
-alias ga="git add --all"
+alias gaa="git add "
+alias gaa="git add --all"
 alias gc="_gc" 
 alias gbls="git branch --all"
 alias gl='git log'
