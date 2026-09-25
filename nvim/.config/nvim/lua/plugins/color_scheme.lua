@@ -28,5 +28,16 @@ return {
       "srcery-colors/srcery-vim",
       lazy = false,
       priority = 1000,
+  },
+  {
+      "rebelot/kanagawa.nvim",
+      lazy = false,
+      priority = 1000,
+  },
+  {
+    "HoNamDuong/hybrid.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   }
 }

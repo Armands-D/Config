@@ -11,6 +11,19 @@ return {
   opts={},
   config = function ()
     require("telescope").setup {
+      defaults = {
+        -- Applies to all pickers (find_files, live_grep, etc.)
+        file_ignore_patterns = {
+          "%.git/",
+          "__pycache__/",
+          "node_modules/",
+        },
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+      },
       extensions = {
         file_browser = {
           browse_files = require("telescope._extensions.file_browser.finders").browse_files,
