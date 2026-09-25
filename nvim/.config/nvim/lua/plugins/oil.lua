@@ -5,13 +5,21 @@ return {
   ---
   opts = {
     float = {
-      padding = 10,
+      padding = 2,
       border = 12,
+      max_width = 0.6,
+      max_height = 0.8,
     },
     view_options = {
       -- Show files and directories that start with "."
       show_hidden = true,
-    }
+    },
+    columns = {
+      "icon",
+      "permissions",
+      "size",
+      -- "mtime",
+    },
   },
   -- Optional dependencies
   dependencies = { { "nvim-mini/mini.icons", opts = {} } },
