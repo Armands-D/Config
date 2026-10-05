@@ -7,7 +7,11 @@ return {
       -- Credit: glepnir
       local lualine = require('lualine')
       local colors =  require('lualine.themes.auto')
-      
+
+      -- Render the bar as a winbar (top of each buffer) instead of the
+      -- classic bottom statusline.
+      vim.opt.laststatus = 0
+
       local conditions = {
         buffer_not_empty = function()
           return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
@@ -21,7 +25,7 @@ return {
           return gitdir and #gitdir > 0 and #gitdir < #filepath
         end,
       }
-      
+
       -- Config
       local config = {
         options = {
@@ -30,27 +34,37 @@ return {
           section_separators = '',
           globalstatus = true,
           theme = 'auto'
-          -- theme = {
-      
-            -- We are going to use lualine_c an lualine_x as left and
-            -- right section. Both are highlighted by c theme .  So we
-            -- are just setting default looks o statusline
-            -- normal = { c = { fg = colors.fg, bg = colors.bg } },
-            -- inactive = { c = { fg = colors.fg, bg = colors.bg } },
-          -- },
         },
+        -- Bottom statusline is unused now (laststatus = 0 above hides it);
+        -- kept empty rather than omitted so lualine never falls back to
+        -- its own defaults here.
         sections = {
-          -- these are to remove the defaults
           lualine_a = {},
           lualine_b = {},
           lualine_y = {},
           lualine_z = {},
-          -- These will be filled later
           lualine_c = {},
           lualine_x = {},
         },
         inactive_sections = {
-          -- these are to remove the defaults
+          lualine_a = {},
+          lualine_b = {},
+          lualine_y = {},
+          lualine_z = {},
+          lualine_c = {},
+          lualine_x = {},
+        },
+        -- This is the bar that actually renders now, at the top of each
+        -- buffer.
+        winbar = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_y = {},
+          lualine_z = {},
+          lualine_c = {},
+          lualine_x = {},
+        },
+        inactive_winbar = {
           lualine_a = {},
           lualine_b = {},
           lualine_y = {},
@@ -59,17 +73,17 @@ return {
           lualine_x = {},
         },
       }
-      
+
       -- Inserts a component in lualine_c at left section
       local function ins_left(component)
-        table.insert(config.sections.lualine_c, component)
+        table.insert(config.winbar.lualine_c, component)
       end
-      
+
       -- Inserts a component in lualine_x at right section
       local function ins_right(component)
-        table.insert(config.sections.lualine_x, component)
+        table.insert(config.winbar.lualine_x, component)
       end
-      
+
       ins_left {
         function()
           return '▊'
@@ -77,11 +91,11 @@ return {
         color = { fg = colors.blue }, -- Sets highlighting of component
         padding = { left = 0, right = 1 }, -- We don't need space before this
       }
-      
+
       ins_left {
         -- mode component
         function()
-          return ''
+          return ''
         end,
         color = function()
           -- auto change color according to neovims mode
@@ -111,44 +125,15 @@ return {
         end,
         padding = { right = 1 },
       }
-      
+
       ins_left {
         -- filesize component
         'filesize',
         cond = conditions.buffer_not_empty,
       }
-      
+
       ins_left {
-        'filename',
-        cond = conditions.buffer_not_empty,
-        color = { fg = colors.magenta, gui = 'bold' },
-      }
-      
-      ins_left { 'location' }
-      
-      ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
-      
-      ins_left {
-        'diagnostics',
-        sources = { 'nvim_diagnostic' },
-        symbols = { error = ' ', warn = ' ', info = ' ' },
-        diagnostics_color = {
-          error = { fg = colors.red },
-          warn = { fg = colors.yellow },
-          info = { fg = colors.cyan },
-        },
-      }
-      
-      -- Insert mid section. You can make any number of sections in neovim :)
-      -- for lualine it's any number greater then 2
-      ins_left {
-        function()
-          return '%='
-        end,
-      }
-      
-      ins_left {
-        -- Lsp server name .
+        -- Lsp server name (swapped in from where filename used to sit)
         function()
           local msg = 'No Active Lsp'
           local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
@@ -164,10 +149,48 @@ return {
           end
           return msg
         end,
-        icon = ' LSP:',
+        icon = ' LSP:',
         color = { fg = '#ffffff', gui = 'bold' },
       }
-      
+
+      ins_left { 'location' }
+
+      ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+
+      ins_left {
+        'diagnostics',
+        sources = { 'nvim_diagnostic' },
+        symbols = { error = ' ', warn = ' ', info = ' ' },
+        diagnostics_color = {
+          error = { fg = colors.red },
+          warn = { fg = colors.yellow },
+          info = { fg = colors.cyan },
+        },
+      }
+
+      -- Two '%=' separators split lualine_c into left / centre / right
+      -- blocks, so whatever sits between them is genuinely centred
+      -- rather than just pushed to one side.
+      ins_left {
+        function()
+          return '%='
+        end,
+      }
+
+      ins_left {
+        -- filename (swapped in from its old early-left position),
+        -- centred and bold.
+        'filename',
+        cond = conditions.buffer_not_empty,
+        color = { fg = colors.magenta, gui = 'bold' },
+      }
+
+      ins_left {
+        function()
+          return '%='
+        end,
+      }
+
       -- Add components to right sections
       ins_right {
         'o:encoding', -- option component same as &encoding in viml
@@ -175,24 +198,24 @@ return {
         cond = conditions.hide_in_width,
         color = { fg = colors.green, gui = 'bold' },
       }
-      
+
       ins_right {
         'fileformat',
         fmt = string.upper,
         icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
         color = { fg = colors.green, gui = 'bold' },
       }
-      
+
       ins_right {
         'branch',
-        icon = '',
+        icon = '',
         color = { fg = colors.violet, gui = 'bold' },
       }
-      
+
       ins_right {
         'diff',
         -- Is it me or the symbol for modified us really weird
-        symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+        symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
         diff_color = {
           added = { fg = colors.green },
           modified = { fg = colors.orange },
@@ -200,7 +223,7 @@ return {
         },
         cond = conditions.hide_in_width,
       }
-      
+
       ins_right {
         function()
           return '▊'
@@ -208,7 +231,7 @@ return {
         color = { fg = colors.blue },
         padding = { left = 1 },
       }
-      
+
       -- Now don't forget to initialize lualine
       lualine.setup(config)
     end
