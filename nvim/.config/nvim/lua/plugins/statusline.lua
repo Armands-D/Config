@@ -150,7 +150,7 @@ return {
           return msg
         end,
         icon = ' LSP:',
-        color = { fg = '#ffffff', gui = 'bold' },
+        color = { fg = colors.magenta, gui = 'bold' },
       }
 
       ins_left { 'location' }
@@ -182,7 +182,14 @@ return {
         -- centred and bold.
         'filename',
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.magenta, gui = 'bold' },
+        color = { fg = '#ffffff', gui = 'bold' },
+      }
+
+      ins_left {
+        -- git branch, now sat centre-right of the filename
+        'branch',
+        icon = '',
+        color = { fg = colors.orange, gui = 'bold' },
       }
 
       ins_left {
@@ -204,12 +211,6 @@ return {
         fmt = string.upper,
         icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
         color = { fg = colors.green, gui = 'bold' },
-      }
-
-      ins_right {
-        'branch',
-        icon = '',
-        color = { fg = colors.violet, gui = 'bold' },
       }
 
       ins_right {

@@ -4,9 +4,16 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
+    exclude=(~/.dotnet ~/Scripts)
     work=(~/rev-ccaas/repo)
     personal=(~/Dev ~/)
-    selected=$(find ${personal[@]} -mindepth 0 -maxdepth 1 -type d | fzf)
+
+    exclude_args=()
+    for dir in "${exclude[@]}"; do
+        exclude_args+=(-not -path "$dir" -not -path "$dir/*")
+    done
+
+    selected=$(find ${personal[@]} -mindepth 0 -maxdepth 1 -type d "${exclude_args[@]}" | fzf)
 fi
 
 if [[ -z $selected ]]; then
