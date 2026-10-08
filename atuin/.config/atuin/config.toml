@@ -178,7 +178,7 @@ enter_accept = true
 ## selected based on the shell's keymap where the keybinding is defined. If
 ## this is set to "emacs", "vim-insert", or "vim-normal", the startup keymap
 ## mode in the Atuin search is forced to be the specified one.
-# keymap_mode = "emacs"
+keymap_mode = "vim-insert"
 
 ## Cursor style in each keymap mode. If specified, the cursor style is changed
 ## in entering the cursor shape. Available values are "default" and
@@ -207,39 +207,41 @@ enter_accept = true
 
 [stats]
 ## Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl
-# common_subcommands = [
-#   "apt",
+common_subcommands = [
+  "apt",
 #   "cargo",
 #   "composer",
 #   "dnf",
-#   "docker",
+  "docker",
 #   "dotnet",
-#   "git",
+  "git",
 #   "go",
 #   "ip",
 #   "jj",
 #   "kubectl",
-#   "nix",
+  # "nix",
 #   "nmcli",
-#   "npm",
+  "npm",
 #   "pecl",
 #   "pnpm",
 #   "podman",
 #   "port",
-#   "systemctl",
-#   "tmux",
+  "systemctl",
+  "tmux",
 #   "yarn",
-# ]
+]
 
 ## Set commands that should be totally stripped and ignored from stats
 # common_prefix = ["sudo"]
 
 ## Set commands that will be completely ignored from stats
-# ignored_commands = [
-#   "cd",
-#   "ls",
-#   "vi"
-# ]
+ignored_commands = [
+  "cd",
+  "ls",
+  "vi",
+  "nvim",
+  "v"
+]
 
 [keys]
 # Defaults to true. If disabled, using the up/down key won't exit the TUI when scrolled past the first/last entry.
@@ -345,7 +347,7 @@ enter_accept = true
 ## Set to false to disable the popup.
 ## This can also be controlled with the ATUIN_TMUX_POPUP environment variable.
 ## Note: The tmux popup is currently supported in zsh, bash, and fish shells. This currently doesn't work with iTerm native tmux integration.
-# enabled = false
+enabled = false
 
 ## Width of the tmux popup window
 ## Can be a percentage, or integer (e.g. "100" means 100 characters wide)
