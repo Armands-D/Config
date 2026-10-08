@@ -118,3 +118,6 @@ fi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 
+
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init bash)"

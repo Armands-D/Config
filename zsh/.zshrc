@@ -35,3 +35,7 @@ echo
 
 neofetch
 fortune -s | cowsay -y | lolcat --spread 10
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
