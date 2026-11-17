@@ -1,0 +1,15 @@
+{
+  "model": "sonnet",
+  "modelSettings": {
+    "claude-sonnet-5-5": {
+      "effortLevel": "low"
+    }
+  },
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "theme": "dark-ansi",
+  "editorMode": "vim",
+  "voiceEnabled": true
+}

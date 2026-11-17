@@ -19,7 +19,7 @@ end
 
 vim.opt.nu = true                 -- set line numbers -- set line numbers
 vim.opt.relativenumber = true     -- use relative line numbers
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -49,6 +49,6 @@ vim.opt.undofile = true
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = tostring(require("config.constants").zen_width)
-
+vim.opt.cursorline = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true

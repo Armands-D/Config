@@ -7,8 +7,8 @@ return {
     legacy_commands = false, -- this will be removed in 4.0.0
     workspaces = {
       {
-        name = "personal",
-        path = "~/Dev/MasterStudyNotes",
+        name = "MasterNotes",
+        path = "~/Dev/MasterNotes",
       },
     },
     picker = {
